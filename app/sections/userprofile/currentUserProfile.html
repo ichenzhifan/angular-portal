@@ -1,0 +1,38 @@
+﻿<div class="userProfile" ng-controller="userProfileController">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="userProfile-wrapper">
+				<div class="row center-align">
+					<ag-user-profile-image-upload default-src="{{userProfile.image}}"></ag-user-profile-image-upload>
+					<p class="m-t-5">
+						<strong>{{userProfile.firstName}} {{userProfile.lastName}}</strong>
+					</p>
+				</div>
+				<div class="row">
+					<label>
+						<strong>Förnamn</strong>
+					</label>
+					<span ag-edit-on-click value="userProfile.firstName" save-edit="updateUserProfile()"></span>
+				</div>
+				<div class="row">
+					<label>
+						<strong>Efternamn</strong>
+					</label>
+					<span ag-edit-on-click value="userProfile.lastName" save-edit="updateUserProfile()"></span>
+				</div>
+				<div class="row">
+					<label>
+						<strong>Om Dig</strong>
+					</label>
+					<span ag-edit-on-click value="userProfile.privateSkills" input-type="textarea" save-edit="updateUserProfile()"></span>
+				</div>
+				<div class="row">
+					<label>
+						<strong>Kunskaper</strong>
+					</label>
+					<span ag-edit-on-click value="userProfile.professionalSkills" input-type="textarea" save-edit="updateUserProfile()"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

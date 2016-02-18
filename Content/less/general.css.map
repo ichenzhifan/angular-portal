@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "general.css",
+  "sources": [
+    "general.less"
+  ],
+  "names": [],
+  "mappings": "AAAA;EACC,kBAAA;;AAGD;EACI,gBAAA;;AAGJ;EACI,iBAAA;;AAGJ;EACC,iBAAA;EACA,kBAAA;;AAGD;EACC,WAAA;;AAGD;EACC,eAAA;;AAGD;EACI,eAAA;;AAGJ;EACI,qBAAA;;;AAQD,IAHF,KAEE,GACC;AAAD,IAFF,EACE,GACC;EACA,WAAA;EACA,mBAAA"
+}

@@ -1,0 +1,8 @@
+﻿<div>
+	<a>{{text}}</a>
+	<div class="position-popover" ng-if="showTemplate">
+		<google-map center="map.center" zoom="map.zoom" refresh="refreshMap">
+			<marker coords="marker.coords" idkey="marker.id"></marker>
+		</google-map>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+﻿<div class="signIn" ng-controller="signInController">
+	<div class="row">
+		<div class="col-xs-12">
+			<form class="form" name="signInForm" role="form" novalidate ng-submit="signIn(user)">
+				<div class="form-group">
+					<label for="input_username">Användarnamn</label>
+					<span class="required-input-pristine" ng-show="signInForm.input_username.$invalid && signInForm.input_username.$pristine">*</span>
+					<input class="form-control" ng-model="user.username" name="input_username" type="text" required />
+					<p class="invalid-input-message" ng-show="signInForm.input_username.$invalid && signInForm.input_username.$dirty">Du måste ange ett användarnamn.</p>
+				</div>
+				<div class="form-group">
+					<label for="input_password">Lösenord</label>
+					<span class="required-input-pristine" ng-show="signInForm.input_password.$invalid && signInForm.input_password.$pristine">*</span>
+					<input class="form-control" ng-model="user.password" name="input_password" type="password" required />
+					<p class="invalid-input-message" ng-show="signInForm.input_password.$invalid && signInForm.input_password.$dirty">Du måste ange ett lösenord.</p>
+				</div>
+				<button class="btn btn-sm pull-right m-t-15 signIn-button" type="submit" ng-disabled="signInForm.$invalid">
+						<span class="fa fa-refresh fa-spin" ng-show="signingIn"></span>
+						<span>Logga in</span>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

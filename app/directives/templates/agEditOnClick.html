@@ -1,0 +1,17 @@
+﻿<p ng-class="{editable: !editing}" ng-show="!editing" ng-click="toggleEdit()" data-content="Klicka för att redigera!" data-placement="right" bs-popover>
+	{{obj.value}}
+</p>
+<div class="input-group" ng-show="editing">
+	<div ng-switch on="switchInputType">
+		<input ng-switch-when="text" class="form-control" type="text" ag-on-esc="cancel()" ag-on-enter="save({data: obj.value})" ng-model="obj.value" autofocus="autofocus" />
+		<textarea ng-switch-when="textarea" class="form-control" ag-on-esc="cancel()" ng-model="obj.value" autofocus="autofocus"></textarea>
+	</div>
+	<span class="input-group-btn">
+		<button class="btn btn-primary addon-edit-btn" type="button" ng-click="save({data: obj.value})">
+			<i class="fa fa-check"></i>
+		</button>
+		<button class="btn btn-danger addon-edit-btn" type="button" ng-click="cancel()">
+			<i class="fa fa-times"></i>
+		</button>
+	</span>
+</div>

@@ -1,0 +1,29 @@
+﻿.btn {
+	&.addon-edit-btn {
+		height: 100%;
+		padding: 0 12px;
+	}
+}
+
+.editable {
+	position: relative;
+	cursor: pointer;
+
+	&:hover {
+		box-shadow: 0 0 0 1px #ccc;
+		border-radius: 3px;
+
+		&:after {
+			content: "\f044";
+			position: absolute;
+			top: 0;
+			right: 2px;
+			margin-top: 3px;
+			display: inline-block;
+			font: normal normal normal 14px/1 FontAwesome;
+			font-size: inherit;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+		}
+	}
+}

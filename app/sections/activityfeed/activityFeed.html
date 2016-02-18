@@ -1,0 +1,128 @@
+﻿<div class="activityFeed" ng-controller="activityFeedController">
+    <div class="feed-header">
+        <a ng-href="#/activityfeed">
+            <h2 class="tile-title">Nyhetsflöde</h2>
+        </a>
+
+        <div class="activityFeed-search">
+            <ul class="list-inline">
+                <li ng-repeat="filteredUser in filteredUsers">
+                    <span class="user-tag">{{filteredUser.fullName}} <span class="fa fa-times user-tag-remove-btn cursor-pointer" ng-click="removeFilteredUser(filteredUser)"></span></span>
+                </li>
+            </ul>
+
+            <div class="typeahead-wrapper filter-icon">
+                <input class="form-control" name="whom" ng-model="tagUser" type="text" placeholder="Filtrera flödet på användare"
+                       ng-options="user as user.fullName for user in users" data-template="agTypehead/ahead.tpl.html" data-min-length="1" data-on-select="addFilteredUser" data-limit="8" bs-typeahead />
+            </div>
+        </div>
+    </div>
+
+    <ag-error ag-topic="activityFeed.getActivityFeed"></ag-error>
+
+    <div class="feed-container" id="feedContainer" on-bottom-topic="activityfeed.hit.bottom" ag-scroll-handler="preventPageScroll($event, $delta, $deltaX, $deltaY)">
+        <div class="listview narrow activityFeed-animate" id="feed_{{$index}}" ng-repeat="news in newsfeed">
+            <div class="media p-l-5">
+                <div class="pull-left">
+                    <img class="user-image" width="40" ng-src="{{news.user.image}}" alt="{{news.user.name}}">
+                </div>
+
+                <div class="media-body">
+                    <strong>
+                        <a ng-hide="isCurrentUser(news.user)" ng-href="#/userProfile/{{news.user.id}}">{{news.user.fullName}}</a>
+                        <a ng-show="isCurrentUser(news.user)">{{news.user.fullName}}</a>
+                    </strong> - <small>{{news.message}}</small>
+                    <div class="clearfix"></div>
+                    <small class="text-muted">{{news.created | date : 'yyyy-MM-dd HH:mm'}}</small>
+                    <!-- Feed message -->
+                    <p class="t-overflow">{{news.userDescription}}</p>
+                    <div class="clearfix"></div>
+
+                    <!-- Link -->
+                    <span class="fa fa-anchor" ng-show="news.link"></span>
+                    <a ng-href="{{news.link | formatUrl}}" target="_blank">{{news.link}}</a>
+
+                    <div class="clearfix"></div>
+                    <!-- Position -->
+                    <span class="fa fa-globe" ng-show="news.place"></span>
+                    <a>{{news.place}}</a>
+                    <!--<ag-google-map ag-google-map-text="{{news.place}}"></ag-google-map>-->
+                    <!-- Tagged users -->
+                    <ul class="list-inline tagged-users">
+                        <li ng-repeat="taggedUser in news.taggedUsers">
+                            <span class="user-tag">
+                                <a ng-hide="isCurrentUser(taggedUser.user)" ng-href="#/userProfile/{{taggedUser.user.id}}">{{taggedUser.user.fullName}}</a>
+                                <a ng-show="isCurrentUser(taggedUser.user)">{{taggedUser.user.fullName}}</a>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <!-- #region Comments -->
+                    <div class="comments">
+                        <a class="m-b-10" ng-show="showCommentToggle(news.comments.length)" ng-click="show = !show" ng-init="show = false">
+                            <span ng-hide="show">Visa {{news.comments.length - 3}} kommentarer till</span>
+                            <span ng-show="show">Visa färre</span>
+                        </a>
+                        <ul class="list-unstyled" ng-show="show">
+                            <li ng-repeat="c in news.comments | orderBy: 'id'">
+                                <img class="comment-image" ng-src="{{c.user.image}}" alt="{{c.user.name}}" />
+                                <strong>
+                                    <a ng-hide="isCurrentUser(c.user)" ng-href="#/userProfile/{{c.user.id}}">{{c.user.fullName}}</a>
+                                    <a ng-show="isCurrentUser(c.user)">{{c.user.fullName}}</a>
+                                </strong> <span>{{c.message}}</span>
+                                <span class="fa fa-times comment-remove" ng-click="deleteComment(news, c)" ng-show="c.user.id === user.id"></span>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled" ng-hide="show">
+                            <li ng-repeat="c in news.comments | orderBy:'id' | limitTo:-3">
+                                <img class="comment-image" ng-src="{{c.user.image}}" alt="{{c.user.name}}" />
+                                <strong>
+                                    <a ng-hide="isCurrentUser(c.user)" ng-href="#/userProfile/{{c.user.id}}">{{c.user.fullName}}</a>
+                                    <a ng-show="isCurrentUser(c.user)">{{c.user.fullName}}</a>
+                                </strong> <span>{{c.message}}</span>
+                                <span class="fa fa-times comment-remove" ng-click="deleteComment(news, c)" ng-show="c.user.id === user.id"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- #endregion -->
+                    <!-- #region Likes, add comment -->
+                    <small ng-show="news.likes.length > 0" class="text-muted">
+                        <span ng-repeat="like in news.likes" ag-repeat-delimiter=",">
+                            <span ng-show="isCurrentUser(like.user)">Du</span>
+                            <span ng-hide="isCurrentUser(like.user)">
+                                <a ng-href="#/userProfile/{{like.user.id}}">{{like.user.fullName}}</a>
+                            </span>
+                        </span>
+                        gillar detta
+                    </small>
+                    <div class="feed-action-pane">
+                        <div class="inline-block">
+                            <a class="like" ng-show="!isLiking(news)" ng-click="like(news)">Gilla <i class="fa fa-thumbs-up"></i></a>
+                            <a class="like" ng-show="isLiking(news)" ng-click="dislike(news)">Sluta gilla</a>
+                        </div>
+                        <div class="inline-block p-5">
+                            <a class="comment cursor-pointer" ng-click="toggleCommentPane(news)">Kommentera <i class="fa fa-comment"></i></a>
+                        </div>
+                        <ag-comment-pane is-visible="news.isShowCommentPanel"
+                                         image="{{user.image}}"
+                                         news-data="news"
+                                         user-name="{{user.firstName}}"
+                                         on-enter="comment(news, obj)">
+                        </ag-comment-pane>
+                    </div>
+                    <!-- #endregion -->
+                </div>
+            </div>
+        </div>
+        <div class="full-width">
+            <ag-loading-progress progress-show-topic="feed.progress.show"
+                                 progress-hide-topic="feed.progress.hide"
+                                 reached-last-page-topic="feed.last.page">
+            </ag-loading-progress>
+        </div>
+        <span class="to-top" ag-scroll-to scroll-ele="feedContainer" scroll-to="feed_0" scroll-duration="300">
+            <i class="fa fa-arrow-circle-up"></i>
+        </span>
+    </div>
+</div>

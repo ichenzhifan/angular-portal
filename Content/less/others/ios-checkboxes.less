@@ -1,0 +1,108 @@
+﻿input {
+	&.switch {
+		max-height: 0;
+		max-width: 0;
+		opacity: 0;
+
+		+ label {
+			position: relative;
+			box-shadow: inset 0 0 0 1px #d5d5d5 !important;
+			text-indent: -5000px;
+			height: 30px;
+			width: 50px;
+			border-radius: 15px !important;
+			background: #ffffff;
+			cursor: pointer;
+
+			&:before {
+				content: "";
+				position: absolute;
+				display: block;
+				height: 30px;
+				width: 30px;
+				top: 0;
+				left: 0;
+				border-radius: 15px;
+				background: rgba(19,191,17,0);
+				.transition(.25s ease-in-out);
+			}
+
+			&:after {
+				content: "";
+				position: absolute;
+				display: block;
+				height: 30px;
+				width: 30px;
+				top: 0;
+				left: 0;
+				border-radius: 15px;
+				background: #ffffff;
+				box-shadow: inset 0 0 0 1px rgba(0,0,0,.2), 0 2px 4px rgba(0,0,0,.2);
+				.transition(.25s ease-in-out);
+			}
+		}
+
+		&:checked {
+			+ label {
+				&:before {
+					width: 50px;
+					background: rgba(19,191,17,1);
+				}
+
+				&:after {
+					left: 20px;
+					box-shadow: inset 0 0 0 1px rgba(19,191,17,1), 0 2px 4px rgba(0,0,0,.2);
+				}
+			}
+		}
+
+		&:disabled {
+			+ label {
+				background: #d5d5d5 !important;
+
+				&:after {
+					background: #d5d5d5;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	input {
+		&.switch {
+			+ label {
+				height: 42px;
+				width: 75px;
+				border-radius: 30px !important;
+				margin-top: -20px;
+
+				&:before {
+					height: 42px;
+					width: 75px;
+					border-radius: 30px;
+				}
+
+				&:after {
+					height: 42px;
+					width: 42px;
+					border-radius: 30px;
+				}
+			}
+
+			&:checked {
+				+ label {
+					&:before {
+						width: 75px;
+						background: rgba(19,191,17,1);
+					}
+
+					&:after {
+						left: 35px;
+						box-shadow: inset 0 0 0 1px rgba(19,191,17,1), 0 2px 4px rgba(0,0,0,.2);
+					}
+				}
+			}
+		}
+	}
+}

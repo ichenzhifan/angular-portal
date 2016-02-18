@@ -1,0 +1,51 @@
+﻿.typeahead {
+	.user-tag {
+		background: #3d98ee;
+		border-radius: 3px;
+		padding: 4px;
+		border: 1px solid #808080;
+
+		.user-tag-remove-btn {
+			margin-right: 5px;
+			cursor: pointer;
+		}
+	}
+
+	.user-tag-dropdown {
+		border-radius: 50%;
+		margin-right: 8px;
+		width: 45px;
+		height: 45px;
+	}
+}
+
+.typeahead-wrapper {
+	position: relative;
+
+	input {
+		text-indent: 13px;
+	}
+
+	&:before {
+		font-family: 'FontAwesome';
+		color: rgba(255, 255, 255, 0.6);
+		position: absolute;
+		font-size: 1.3em;
+	}
+
+	&.search-icon {
+		&:before {
+			top: 6px;
+			left: 7px;
+			content: "\f002";
+		}
+	}
+
+	&.filter-icon {
+		&:before {
+			top: 6px;
+			left: 7px;
+			content: "\f0b0";
+		}
+	}
+}

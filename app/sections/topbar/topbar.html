@@ -1,0 +1,58 @@
+﻿<div ng-controller="topbarController">
+	<header id="header" class="media p-r-0 row clear-margin">
+		<a class="logo pull-left" href="#/home">
+			Engagement Portal
+		</a>
+
+		<div class="media-body">
+			<div class="media" id="top-menu">
+				<div ng-include="'app/sections/notifications/notifications.html'"></div>
+				<!--<div class="pull-left notifications tm-icon" dropdown>
+					<a data-drawer="notifications" class="dropdown-toggle" ng-class="drawer-toggle" href="">
+						<i class="sa-top-message"></i>
+						<i class="n-count">{{unreadNotifications.length}}</i>
+						<span>Notifieringar</span>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<li class="notification-list-item" ng-class="{unread: not.unread}" ng-repeat="not in notifications">
+							<a ng-href="{{not.url}}" ng-mouseover="markAsRead(not)">
+								<img class="notification-image" ng-src="{{not.user.image}}" />
+								<small class="notification-name">{{not.user.fullName}}</small>
+								<span class="notification-message">{{not.message}}</span>
+								<div class="clearfix"></div>
+								<small class="text-muted">{{not.date}}</small>
+								<div class="clearfix"></div>
+								<span>{{not.type}}</span>
+							</a>
+						</li>
+					</ul>
+				</div>-->
+				<div class="pull-right">
+					<div class="btn-group profile-menu" dropdown>
+						<button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+							<img class="profile-pic animated" ng-src="{{user.image}}" alt="{{user.firstName}}">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu pull-right" role="menu">
+							<li class="profile-menu-listitem">
+								<a href="#/currentUserProfile">Min Profil</a>
+							</li>
+							<li class="profile-menu-listitem">
+								<a href="">Meddelanden</a>
+							</li>
+							<li class="profile-menu-listitem">
+								<a ng-click="openSettings()">Inställningar</a>
+							</li>
+							<li class="profile-menu-listitem">
+								<a ng-click="signOut()">Logga ut</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--<div class="media-body">
+						<input type="text" class="main-search">
+					</div>-->
+			</div>
+		</div>
+	</header>
+</div>

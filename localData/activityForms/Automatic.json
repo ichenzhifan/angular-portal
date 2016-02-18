@@ -1,0 +1,42 @@
+﻿{
+    "ActivityId": 1,
+    "Data": {
+        "Fields": [
+            {
+                "Name": "link",
+                "Value": {
+                    "Type": "text",
+                    "Data": "This is the value"
+                }
+            },
+            {
+                "Name": "users",
+                "Value": {
+                    "Type": "user",
+                    "Data": [
+                        {
+
+                            "Id": 1,
+                            "Name": "Nisse"
+                        },
+                        {
+                            "Id": 2,
+                            "Name": "Heppa"
+                        }
+                    ],
+                    "Users": [
+                        {
+                            
+                            "Id": 1,
+                            "Name": "Nisse"
+                        },
+                        {
+                            
+                            "Id": 2,
+                            "Name": "Heppa"
+                        } ]
+                }
+            }
+        ]
+    }
+}

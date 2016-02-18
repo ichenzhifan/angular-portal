@@ -1,0 +1,26 @@
+﻿<div class="pipeline" ng-controller="pipelineController">
+	<h2 class="tile-title">Pipeline</h2>
+	<div class="p-10 row">
+		<div class="col-md-12">
+			<p>
+				De aktiviteter som du åtagit att genomföra placerar du här.
+				<span class="fa fa-2x fa-lock pull-right" ng-show="isOngoing()"></span>
+				<span class="fa fa-2x fa-trash-o clear-pipeline-icon cursor-pointer pull-right" ng-show="isOngoing()" ng-click="resetPipeline()" data-container="body" data-trigger="hover" data-placement="bottom" data-content="Rensa din pipeline" bs-popover></span>
+			</p>
+			<div ag-countdown-clock date="endDate" sender="'pipeline'" ng-show="isOngoing()" class="pull-right"></div>
+		</div>
+	</div>
+	<div class="p-10 news row">
+        <button class="info-icon" type="button" data-trigger="focus" data-placement="bottom" data-template="popover/pipelineInfo.tpl.html" bs-popover>
+            <i class="fa fa-info-circle"></i>
+        </button>
+		<div class="col-xs-4" ng-repeat="activity in activitiesInPipeline | orderBy: 'position'">
+			<div class="tile pipeline-tile p-5 m-b-10 droppable" x-on-drop="dropped($index, dragData)" x-lvl-drop-target="true">
+				<span class="fa fa-times remove-button" ng-show="!isOngoing() && activity.id !== undefined" ng-click="removeFromPipeline(activity.id)"></span>
+				<img ng-class="{done: activity.isCompleted}" ng-hide="activity.id === undefined" ng-src="{{activity.imgSrc}}" alt="{{activity.name}}" data-custom="{{buildCustomData(activity.id)}}" x-lvl-draggable="true" ng-click="open(activity)" />
+				<div class="clearfix"></div>
+				<small>{{activity.name}}</small>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+﻿<div class="assets" ng-controller="assetsController">
+	<ag-error ag-topic="assets.getAssets"></ag-error>
+    <div class="assets-header">
+        <h2 class="tile-title">Tillgångar</h2>
+    </div>
+    <div class="assets-container">
+        <div class="p-10">
+            <p>Här ser du hur många stenar du tjänat inom respektive område.</p>
+            <div class="m-b-10" ng-repeat="asset in assets">
+                <div class="progress progress-alt">
+                    <span class="stone">
+                        <span ng-repeat="item in asset.items" class="asset-animate">
+                            <img class="asset-stone" ng-src="{{item.image}}" />
+                        </span>
+                    </span>
+                    <span>{{asset.name}} : {{asset.numberOfItems}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

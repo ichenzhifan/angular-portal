@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "leaderboard.css",
+  "sources": [
+    "leaderboard.less"
+  ],
+  "names": [],
+  "mappings": "AAAA;EACI,iBAAA;EACA,iBAAA;EACA,gBAAA;;AAHJ,sBAKI;EACI,WAAA;EACA,YAAA;EACA,kBAAA"
+}

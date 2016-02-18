@@ -1,0 +1,63 @@
+﻿<div ng-controller="achievementController">
+    <div class="achievement-header">
+        <div class="badge-head row">
+            <p class="sub-title">Här ser du de utmärkelser som du förtjänat</p>
+            <div class="pull-right badge-filter">
+                <div class="btn-group badge-menu" dropdown is-open="dropdown.isOpen">
+                    <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                        <span class="p-5">{{dropdown.defaultValue}}</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li class="menu-listitem cursor-pointer" ng-repeat="type in badgeTypes">
+                            <a href ng-click="filterBadges($event, type)">{{type.value}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="achievement-container">
+        <div class="user-badge-list inline-block">
+            <div class="col-lg-3 col-md-4 col-xs-6 p-10" ng-repeat="badge in badges">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img ng-src="{{badge.imageSrc}}" alt="{{badge.description}}">
+                    </div>
+                    <div class="col-sm-8 badge-details">
+                        <div class="row">
+                            <label>
+                                <strong> Name: </strong>
+                            </label>
+                            <span> <strong> {{badge.name}}</strong></span>
+                        </div>
+                        <div class="row" ng-show="badge.completed != null">
+                            <label>
+                                <strong> completed: </strong>
+                            </label>
+                            <span> {{badge.completed | date : format: "fullDate" }}</span>
+                        </div>
+                        <div class="row" ng-show="badge.completed == null">
+                            <label>
+                                <strong> progress: </strong>
+                            </label>
+                            <span> {{badge.percentageDone | formatPercentage }}</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                <strong> max: </strong>
+                            </label>
+                            <span> {{badge.max }}</span>
+                        </div>
+                        <div class="row">
+                            <label>
+                                <strong> description: </strong>
+                            </label>
+                            <span> {{badge.description }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿{
+    "activityId": 3,
+    "data": {
+        "fields": [
+            {
+                "name": "description",
+                "value": {
+
+                    "type": "textarea",
+                    "data": "Detta var bra"
+                }
+            },
+            {
+                "name": "link",
+                "value": {
+                    "type": "text",
+                    "data": "www.google.se"
+                }
+            },
+            {
+                "name": "users",
+                "value": {
+
+                    "type": "user",
+                    "data": [
+                        {
+                            "id": 3
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

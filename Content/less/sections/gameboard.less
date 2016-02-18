@@ -1,0 +1,240 @@
+﻿.gameboard {
+	.tile {
+		height: auto;
+		padding: 0 0 15px 0;
+
+		&.activityGroup-1 {
+			outline: 2px solid @info;
+
+			&.glow {
+				-moz-animation: glow-info 1.5s ease 4;
+				-o-animation: glow-info 1.5s ease 4;
+				-webkit-animation: glow-info 1.5s ease 4;
+				animation: glow-info 1.5s ease 4;
+			}
+		}
+
+		&.activityGroup-2 {
+			outline: 2px solid @warning;
+
+			&.glow {
+				-moz-animation: glow-warning 1.5s ease 4;
+				-o-animation: glow-warning 1.5s ease 4;
+				-webkit-animation: glow-warning 1.5s ease 4;
+				animation: glow-warning 1.5s ease 4;
+			}
+		}
+
+		&.activityGroup-4 {
+			outline: 2px solid @success;
+
+			&.glow {
+				-moz-animation: glow-success 1.5s ease 4;
+				-o-animation: glow-success 1.5s ease 4;
+				-webkit-animation: glow-success 1.5s ease 4;
+				animation: glow-success 1.5s ease 4;
+			}
+		}
+
+		&.activityGroup-8 {
+			outline: 2px solid @danger;
+
+			&.glow {
+				-moz-animation: glow-danger 1.5s ease 4;
+				-o-animation: glow-danger 1.5s ease 4;
+				-webkit-animation: glow-danger 1.5s ease 4;
+				animation: glow-danger 1.5s ease 4;
+			}
+		}
+	}
+
+	.activity-wrapper {
+		padding: 0 0 0 0;
+		max-height: 130px;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+        margin-top:10px;
+		margin-bottom: 10px;
+
+		.gameboard-activity {
+			max-width: 95px;
+			max-height: 105px;
+
+			img {
+				margin: 10px 0;
+				opacity: 0.8;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+
+			.dots {
+				margin: -10px 0 5px 0;
+			}
+
+			&.in-pipeline {
+				opacity: 0.3;
+			}
+		}
+
+		.lines {
+			height: 2px;
+			width: 100%;
+			margin-top: 5px;
+
+			&.one-line {
+				&:after {
+					content: "";
+					border-bottom: 2px solid #FFF;
+					width: 100%;
+					display: block;
+				}
+			}
+
+			&.two-lines {
+				&:after {
+					content: "";
+					border-top: 2px solid #FFF;
+					border-bottom: 2px solid #FFF;
+					width: 100%;
+					display: block;
+					height: 9px;
+				}
+			}
+
+			&.three-lines {
+				height: 1px;
+				background: #FFF;
+
+
+				&:after {
+					content: "";
+					border-top: 2px solid #FFF;
+					border-bottom: 2px solid #FFF;
+					width: 100%;
+					height: 10px;
+					display: block;
+					position: absolute;
+					bottom: -17px;
+				}
+			}
+		}
+	}
+
+	.completed-counter {
+		height: 21px;
+		width: 21px;
+		-ms-border-radius: 50%;
+		border-radius: 50%;
+		border: 1px solid #000;
+		font-weight: 600;
+		font-size: 14px;
+		position: absolute;
+		top: 9px;
+		right: 16px;
+		background: #d1d1d1;
+		color: #000;
+		text-align: center;
+		line-height: 10px;
+		padding: 4px 0 0 1px;
+		-moz-animation-name: bounceIn;
+		-o-animation-name: bounceIn;
+		-webkit-animation-name: bounceIn;
+		animation-name: bounceIn;
+
+		&.crm {
+			background: #000;
+			color: #FFF;
+		}
+	}
+}
+
+.glow-success() {
+	0%, 100% {
+		box-shadow: 0 0 4px 4px @success, 0 0 4px 2px @success inset;
+	}
+
+	50% {
+		box-shadow: 0 0 10px 10px @success, 0 0 8px 4px @success inset;
+	}
+}
+
+.glow-danger() {
+	0%, 100% {
+		box-shadow: 0 0 4px 4px @danger, 0 0 4px 2px @danger inset;
+	}
+
+	50% {
+		box-shadow: 0 0 10px 10px @danger, 0 0 8px 4px @danger inset;
+	}
+}
+
+.glow-warning() {
+	0%, 100% {
+		box-shadow: 0 0 4px 4px @warning, 0 0 4px 2px @warning inset;
+	}
+
+	50% {
+		box-shadow: 0 0 10px 10px @warning, 0 0 8px 4px @warning inset;
+	}
+}
+
+.glow-info() {
+	0%, 100% {
+		box-shadow: 0 0 4px 4px @info, 0 0 4px 2px @info inset;
+	}
+
+	50% {
+		box-shadow: 0 0 10px 10px @info, 0 0 8px 4px @info inset;
+	}
+}
+
+@keyframes glow-success {
+	.glow-success();
+}
+
+@-moz-keyframes glow-success {
+	.glow-success();
+}
+
+@-webkit-keyframes glow-success {
+	.glow-success();
+}
+
+@keyframes glow-info {
+	.glow-info()
+}
+
+@-moz-keyframes glow-info {
+	.glow-info()
+}
+
+@-webkit-keyframes glow-info {
+	.glow-info()
+}
+
+@keyframes glow-danger {
+	.glow-danger()
+}
+
+@-moz-keyframes glow-danger {
+	.glow-danger()
+}
+
+@-webkit-keyframes glow-danger {
+	.glow-danger()
+}
+
+@keyframes glow-warning {
+	.glow-warning()
+}
+
+@-moz-keyframes glow-warning {
+	.glow-warning()
+}
+
+@-webkit-keyframes glow-warning {
+	.glow-warning()
+}

@@ -1,0 +1,23 @@
+﻿.animationName(@name) {
+	-moz-animation-name: @name;
+	-o-animation-name: @name;
+	-webkit-animation-name: @name;
+	animation-name: @name;
+}
+
+.round() {
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.transition(@transition) {
+	-moz-transition: @transition;
+	-o-transition: @transition;
+	-webkit-transition: @transition;
+	transition: @transition;
+}
+
+.trans(){
+	.transition(all 0.3s ease);
+}

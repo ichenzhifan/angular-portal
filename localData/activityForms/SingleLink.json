@@ -1,0 +1,24 @@
+﻿{
+    "config": {
+        "withUserTagging": false,
+        "userTaggingMandatory": false
+    },
+    "fields": [
+        {
+            "name": "description",
+            "caption": "Beskrivning",
+            "validationMessage": "Du måste ange en beskrivning.",
+            "mandatory": true,
+            "model": "",
+            "type": "textarea"
+        },
+        {
+            "name": "link",
+            "caption": "Länk",
+            "validationMessage": "Du måste ange en länk.",
+            "mandatory": true,
+            "model": "",
+            "type": "text"
+        }
+    ]
+}

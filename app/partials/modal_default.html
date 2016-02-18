@@ -1,0 +1,24 @@
+﻿<div class="modal-header">
+	<button type="button" class="close" data-ng-click="modalOptions.close()" aria-hidden="true">&times;</button>
+	<h4 class="modal-title">{{modalOptions.headerText}}</h4>
+</div>
+<div class="modal-body">
+	<div class="row eq">
+		<div class="col-xs-12 text-center">
+			<span ng-if="modalOptions.imgSrc.length>0" class="pull-right">
+				<img ng-src="{{modalOptions.imgSrc}}" />
+			</span>
+			<p>
+				{{modalOptions.content}}
+			</p>
+		</div>
+	</div>
+</div>
+<div class="modal-footer" ng-show="modalOptions.showFooter">
+	<button type="button" class="btn pull-right" data-ng-click="modalOptions.close()">
+		{{modalOptions.closeButtonText}}
+	</button>
+	<button class="btn btn-primary" data-ng-click="modalOptions.ok(true);">
+		{{modalOptions.actionButtonText}}
+	</button>
+</div>

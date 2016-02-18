@@ -1,0 +1,55 @@
+﻿.form {
+	input,
+	textarea,
+	select {
+		&::-webkit-input-placeholder {
+			color: rgba(128, 128, 128, 0.45);
+		}
+
+		&.ng-invalid {
+			box-shadow: 0 0 2px 2px rgb(178, 6, 6) inset;
+
+			&::-webkit-input-placeholder {
+				color: rgb(178, 6, 6);
+			}
+
+			&::-ms-input-placeholder {
+				color: rgb(178, 6, 6);
+			}
+
+			&::-moz-placeholrder {
+				color: rgb(178, 6, 6);
+			}
+
+			&.ng-pristine {
+				box-shadow: none;
+			}
+		}
+	}
+
+	.required-input-pristine {
+		color: #E9BA50;
+		font-size: 14px;
+	}
+
+	.invalid-input-message {
+		color: #FF3B3B;
+		font-size: 12px;
+		text-shadow: none;
+	}
+}
+
+input,
+textarea {
+	&.form-control {
+		&::-moz-selection{
+			background: rgb(255, 255, 255);
+			color: #000;
+		}
+
+		&::selection {
+			background: rgb(255, 255, 255);
+			color: #000;
+		}
+	}
+}

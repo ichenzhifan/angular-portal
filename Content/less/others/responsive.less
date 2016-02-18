@@ -1,0 +1,480 @@
+﻿
+/*small devices tablets*/
+@media only screen and (max-width : 768px) {
+    .app-content {
+        min-width: 740px;
+    }
+
+    /*#region Gameboard */
+    .gameboard {
+        /*#region common*/
+        /*override bootstrap on samll screen, which defined on custom-overrides.less*/
+        .col-sm-3 {
+            width: 25%;
+        }
+
+        .col-sm-4 {
+            width: 33.333333%;
+        }
+
+        .col-sm-3, .col-sm-4 {
+            float: left;
+        }
+        /*#endregion*/
+        .gameboard-activity {
+            .dots {
+                &.list-inline > li {
+                    padding-left: 3px;
+                    padding-right: 3px;
+                }
+            }
+        }
+
+        .completed-counter {
+            width: 17px;
+            height: 17px;
+            font-size: 11px;
+            padding: 2px 0 0 0;
+            top: 0;
+            right: 1px;
+        }
+
+        img {
+            max-width: 80%;
+        }
+    }
+    /*#endregion */
+
+    /*#region modal*/
+    .modal-dialog {
+        width: 450px;
+        margin: 30px auto;
+    }
+    /*#endregion */
+
+    /*#region Pipeline */
+
+    .pipeline {
+        .tile {
+            &.pipeline-tile {
+                .remove-button {
+                    top: 5px;
+                    right: 20px;
+                }
+            }
+        }
+    }
+
+    /*#endregion */
+
+    /*#region ribbon*/
+    .ribbon {
+        &.ribbon-mark {
+            display: none;
+        }
+    }
+
+    .small-ribbon {
+        &.ribbon-mark {
+            top: 5px;
+            left: 3px;
+            display: block !important;
+
+            .ribbon-text {
+                font-size: 14px;
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+            }
+        }
+    }
+    /*#endregion*/
+
+    /*#region topbar*/
+    .notifications {
+        /*override bootstrap on samll screen, which defined on custom-overrides.less*/
+        .col-md-3 {
+            width: 25%;
+        }
+
+        .col-md-6 {
+            width: 50%;
+        }
+
+        .col-md-9 {
+            width: 75%;
+        }
+
+        .col-md-3, .col-md-6, .col-md-9 {
+            float: left;
+        }
+    }
+    /*#endregion*/
+}
+
+/*Override bootstrap for profile-menu class*/
+@media (max-width: 780px) {
+    /*AEP-311:When screen size is "smaller" than usual, 
+    * you can't click on anything in the top bar
+    */
+    .profile-menu {
+        display: inline-block;
+    }
+}
+
+/* XGA iPad / very small desktop/notebook */
+@media only screen and (min-width: 769px) and (max-width : 1024px) {
+
+    /*#region Gameboard */
+    .gameboard {
+        .gameboard-activity {
+            .dots {
+                &.list-inline > li {
+                    padding-left: 3px;
+                    padding-right: 3px;
+                }
+            }
+        }
+
+        .completed-counter {
+            width: 17px;
+            height: 17px;
+            font-size: 11px;
+            padding: 2px 0 0 0;
+            top: 0;
+            right: 1px;
+        }
+
+        img {
+            max-width: 80%;
+        }
+    }
+
+    /*#endregion */
+
+    /*#region Assets */
+    .assets {
+        .progress {
+            margin: 0;
+            height: 20px;
+
+            span {
+                line-height: 15px;
+                margin: 0;
+            }
+
+            .stone {
+                .asset-stone {
+                    width: 15px;
+                    height: 15px;
+                }
+            }
+        }
+    }
+
+    /*#endregion */
+
+    /*#region Pipeline */
+
+    .pipeline {
+        .tile {
+            &.pipeline-tile {
+                .remove-button {
+                    top: 5px;
+                    right: 15px;
+                }
+            }
+        }
+    }
+
+    /*#endregion */
+
+    /*#region Newsfeed */
+
+    .newsfeed {
+        height: 403px;
+    }
+
+    /*#endregion */
+
+    /*#region ribbon*/
+    .ribbon {
+        &.ribbon-mark {
+            display: none;
+        }
+    }
+
+    .small-ribbon {
+        &.ribbon-mark {
+            top: 6px;
+            left: 3px;
+            display: block !important;
+
+            .ribbon-text {
+                font-size: 16px;
+                width: 26px;
+                height: 26px;
+                line-height: 26px;
+            }
+        }
+    }
+    /*#endregion*/
+
+    /*#region topbar*/
+    .notifications {
+        /*override bootstrap on samll screen, which defined on custom-overrides.less*/
+        .col-md-3 {
+            width: 25%;
+        }
+
+        .col-md-6 {
+            width: 50%;
+        }
+
+        .col-md-9 {
+            width: 75%;
+        }
+
+        .col-md-3, .col-md-6, .col-md-9 {
+            float: left;
+        }
+    }
+    /*#endregion*/
+}
+
+/* SXGA Small desktop */
+@media only screen and (min-width: 1025px) and (max-width : 1280px) {
+    /*#region Gameboard */
+    .gameboard {
+        .completed-counter {
+            width: 19px;
+            height: 19px;
+            font-size: 13px;
+            padding: 3px 0 0 0;
+            top: 0;
+            right: 2px;
+        }
+
+        img {
+            max-width: 90%;
+        }
+    }
+
+    /*#endregion */
+
+    /*#region Assets */
+    .assets {
+        .progress {
+            margin: 0;
+            height: 25px;
+
+            span {
+                line-height: 18px;
+                margin: 0;
+            }
+
+            .stone {
+                .asset-stone {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+        }
+    }
+
+    /*#endregion */
+
+    /*#region Pipeline */
+
+    .pipeline {
+        .tile {
+            &.pipeline-tile {
+                .remove-button {
+                    top: 5px;
+                    right: 20px;
+                }
+            }
+        }
+    }
+
+    /*#endregion */
+
+    /*#region Newsfeed */
+
+    .newsfeed {
+        height: 423px;
+
+        .comments {
+            input {
+                width: 215px;
+            }
+        }
+    }
+
+    /*#endregion */
+
+    /*#region ribbon*/
+    .ribbon {
+        &.ribbon-mark {
+            display: none;
+        }
+    }
+
+    .small-ribbon {
+        &.ribbon-mark {
+            top: 8px;
+            left: 3px;
+            display: block !important;
+
+            .ribbon-text {
+                font-size: 20px;
+                width: 28px;
+                height: 28px;
+                line-height: 28px;
+            }
+        }
+    }
+    /*#endregion*/
+}
+
+/* WXGA Ultrabook */
+@media only screen and (min-width : 1281px) and (max-width: 1599px) {
+    /*#region Gameboard */
+    .gameboard {
+        .activity-wrapper {
+            .lines {
+                margin-top: 10px;
+            }
+        }
+
+        .completed-counter {
+            width: 21px;
+            height: 21px;
+            font-size: 14px;
+            padding: 4px 0 0 0;
+            top: 5px;
+            right: 5px;
+        }
+
+        img {
+            max-width: 94%;
+        }
+    }
+    /*#endregion */
+
+    /*#region Assets */
+    .assets {
+        .progress {
+            margin: 0;
+            height: 30px;
+
+            span {
+                line-height: 22px;
+                margin: 0 2px 0 1px;
+            }
+
+            .stone {
+                .asset-stone {
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+        }
+    }
+    /*#endregion */
+
+    /*#region Pipeline */
+    .pipeline {
+        .tile {
+            &.pipeline-tile {
+                .remove-button {
+                    top: 5px;
+                    right: 35px;
+                }
+            }
+        }
+    }
+    /*#endregion */
+
+    /*#region Newsfeed */
+    .newsfeed {
+        height: 443px;
+
+        .comments {
+            input {
+                width: 273px;
+            }
+        }
+    }
+    /*#endregion */
+
+    /*#region ribbon*/
+    .ribbon {
+        &.ribbon-mark {
+            display: none;
+        }
+    }
+
+    .small-ribbon {
+        &.ribbon-mark {
+            display: block !important;
+        }
+    }
+    /*#endregion*/
+}
+
+/* High resolution desktop */
+@media only screen and (min-width: 1600px) {
+    /*#region Gameboard */
+    .gameboard {
+        .activity-wrapper {
+            .lines {
+                margin-top: 15px;
+            }
+        }
+
+        .completed-counter {
+            width: 21px;
+            height: 21px;
+            font-size: 14px;
+            padding: 4px 0 0 0;
+            top: 5px;
+            right: 12px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+    /*#endregion */
+
+    /*#region Assets */
+    .assets {
+    }
+    /*#endregion */
+
+    /*#region Pipeline */
+    .pipeline {
+        .tile {
+            &.pipeline-tile {
+                .remove-button {
+                    top: 5px;
+                    right: 50px;
+                }
+            }
+        }
+    }
+    /*#endregion */
+
+    /*#region Newsfeed */
+    .newsfeed {
+        height: 469px;
+
+        .comments {
+            input {
+                width: 273px;
+            }
+        }
+    }
+    /*#endregion */
+}

@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="utf-8">
+	<title>Awesome Portal</title>
+
+	<link href="Content/less/main.css" rel="stylesheet" />
+	<link href="Content/css/form.css" rel="stylesheet">
+	<link href="Content/css/icons.css" rel="stylesheet">
+</head>
+<body ng-controller="settingsController" ng-attr-id="{{selectedTheme}}" class="app-content">
+	<toaster-container toaster-options="{'time-out': 3000, 'close-button':true}"></toaster-container>
+	<div ng-class="{'scale-and-blur': modalVisible}">
+		<div ng-show="signedIn" ng-include="'app/sections/topbar/topbar.html'"></div>
+		<section id="main" class="p-relative" role="main">
+			<section id="content" class="container">
+				<div ng-controller="shellController" ng-view></div>
+			</section>
+		</section>
+	</div>
+
+	<!-- In production use:
+		<script src="built.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script src="Scripts/angular-google-maps.min.js"></script>
+		-->
+	<!--#region Bootstrapping -->
+	<script src="Scripts/angular/upload/angular-file-upload-shim.min.js"></script>
+	<script src="Scripts/angular/loader/angular-loader.js"></script>
+	<script src="Scripts/angular/angular.js"></script>
+	<script src="scripts/angular/animate/angular-animate.min.js"></script>
+	<script src="Scripts/angular/route/angular-route.min.js"></script>
+	<script src="Scripts/angular/ngStorage/ngStorage.min.js"></script>
+	<script src="Scripts/angular/ui-bootstrap/ui-bootstrap.js"></script>
+	<script src="Scripts/angular/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="app/setup/app.js"></script>
+	<script src="app/setup/init_modules.js"></script>
+	<script src="app/setup/appSettings.route.js"></script>
+	<script src="Scripts/angular/sanitize/angular-sanitize.min.js"></script>
+	<script src="Scripts/angular/datepicker/angular-pickadate.js"></script>
+	<script src="Scripts/angular/angular-mousewheel/angular-mousewheel.js"></script>
+	<!--<script src="Scripts/angular/angular-strap/dist/angular-strap.min.js"></script>
+		<script src="Scripts/angular/angular-strap/dist/angular-strap.tpl.min.js"></script>-->
+	<script src="Scripts/angular/angular-strap/dist/angular-strap.js"></script>
+	<script src="Scripts/angular/angular-strap/dist/angular-strap.tpl.js"></script>
+	<script src="Scripts/angular/toastr/toaster.js"></script>
+	<script src="Scripts/angular/angular-filter/angular-filter.js"></script>
+	<script src="Scripts/angular/ngTagsInput/ng-tags-input.js"></script>
+    <script src="Scripts/pace.js"></script>
+	<script src="Scripts/angular/upload/angular-file-upload.min.js"></script>
+    <script src="Scripts/animatedScrollTo.js"></script>
+	<!--#endregion -->
+	<!--#region Directives -->
+	<script src="app/directives/agOnModelChange.js"></script>
+	<script src="app/directives/agDraggable.js"></script>
+	<script src="app/directives/agDroppable.js"></script>
+	<script src="app/directives/agError.js"></script>
+	<script src="app/directives/agUserTagging.js"></script>
+	<script src="app/directives/agCountdownClock.js"></script>
+	<script src="app/directives/agRepeatDelimiter.js"></script>
+	<script src="app/directives/agOnEnter.js"></script>
+	<script src="app/directives/agOnEsc.js"></script>
+	<script src="app/directives/agGoogleMap.js"></script>
+	<script src="app/directives/agEditOnClick.js"></script>
+	<script src="app/directives/agUserProfileImageUpload.js"></script>
+	<script src="app/directives/agGameboardCompleted.js"></script>
+	<script src="app/directives/agCommentPane.js"></script>
+	<script src="app/directives/agAssetAdded.js"></script>
+    <script src="app/directives/agValUrl.js"></script>
+    <script src="app/directives/agScrollHandler.js"></script>
+    <script src="app/directives/agLoadingProgress.js"></script>
+    <script src="app/directives/agScrollTo.js"></script>
+	<!-- #endregion -->
+	<!--#region Services -->
+	<script src="app/setup/configModel.js"></script>
+	<script src="app/setup/cachedTemplates.js"></script>
+	<script src="app/_services/common/dataService.js"></script>
+	<script src="app/_services/common/authenticationInterceptor.js"></script>
+	<script src="app/_services/common/messageService.js"></script>
+
+	<script src="app/_services/pipelineService.js"></script>
+	<script src="app/_services/gameboardService.js"></script>
+	<script src="app/_services/achievementService.js"></script>
+	<script src="app/_services/activityFeedService.js"></script>
+	<script src="app/_services/assetService.js"></script>
+	<script src="app/_services/leaderboardService.js"></script>
+	<script src="app/_services/activityService.js"></script>
+
+	<script src="app/_services/common/repoService.js"></script>
+	<script src="app/_services/common/modalService.js"></script>
+	<script src="app/setup/uuidFactory.js"></script>
+	<script src="app/_services/common/accountHandler.js"></script>
+	<script src="app/_services/common/pusherService.js"></script>
+	<script src="app/_services/userProfileService.js"></script>
+	<script src="app/_services/common/uploadFileService.js"></script>
+	<script src="app/_services/challengeService.js"></script>
+	<script src="app/_services/notificationService.js"></script>
+	<script src="app/_services/common/dateHelperService.js"></script>
+    <script src="app/_services/common/urlService.js"></script>
+	<!--#endregion -->
+	<!--#region Repositories -->
+	<script src="app/_repositories/userRepository.js"></script>
+	<script src="app/_repositories/gameboardRepository.js"></script>
+	<script src="app/_repositories/activityFeedRepository.js"></script>
+	<script src="app/_repositories/achievementRepository.js"></script>
+	<script src="app/_repositories/assetRepository.js"></script>
+	<script src="app/_repositories/leaderboardRepository.js"></script>
+	<script src="app/_repositories/activityRepository.js"></script>
+	<script src="app/_repositories/pipelineRepository.js"></script>
+	<script src="app/_repositories/challengeRepository.js"></script>
+	<script src="app/_repositories/notificationRepository.js"></script>
+	<!--#endregion -->
+	<!--#region Constants -->
+	<script src="app/constants/mockUrls.js"></script>
+	<script src="app/constants/apiUrls.js"></script>
+	<script src="app/constants/paths.js"></script>
+	<!--#endregion -->
+	<!--#region Filters -->
+	<script src="app/filters/formatNumber.js"></script>
+	<script src="app/filters/rangeFilter.js"></script>
+	<script src="app/filters/formatUrl.js"></script>
+	<script src="app/filters/formatPercentage.js"></script>
+	<!--#endregion -->
+	<!--#region Controllers -->
+	<script src="app/sections/shell/shellController.js"></script>
+	<script src="app/sections/account/signInController.js"></script>
+	<script src="app/sections/gameboard/gameboardController.js"></script>
+	<script src="app/sections/pipeline/pipelineController.js"></script>
+	<script src="app/sections/leaderboard/leaderboardController.js"></script>
+	<script src="app/sections/assets/assetsController.js"></script>
+	<script src="app/sections/achievements/achievementController.js"></script>
+	<script src="app/sections/notifications/notificationController.js"></script>
+	<script src="app/sections/notifications/assetNotificationController.js"></script>
+	<script src="app/sections/notifications/challengeNotificationController.js"></script>
+	<script src="app/sections/activity/tabs/challengeController.js"></script>
+	<script src="app/sections/activity/activityController.js"></script>
+	<script src="app/sections/activityfeed/activityFeedController.js"></script>
+	<script src="app/sections/topbar/topbarController.js"></script>
+	<script src="app/sections/settings/settingsController.js"></script>
+	<script src="app/sections/activity/tabs/tabController.js"></script>
+	<script src="app/sections/userprofile/userProfileController.js"></script>
+	<!--#endregion -->
+	<!--#region Other scripts -->
+	<!--<script src="Scripts/underscore-min.js"></script>-->
+	<script src="app/setup/customExtensions.js"></script>
+	<script src="Scripts/jsDate.js"></script>
+	<script src="Scripts/lodash-underscore.min.js"></script>
+	<script src="//js.pusher.com/2.2/pusher.min.js"></script>
+	<script src="Scripts/angular/angular-mousewheel/hamster.js"></script>
+	<!--<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+	<!--<script src="Scripts/angular-google-maps.min.js"></script>-->
+	<!--#endregion -->
+</body>
+</html>

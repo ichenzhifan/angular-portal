@@ -1,0 +1,23 @@
+﻿<div class="col-xs-12 m-t-20 tab-pane" ng-controller="challengeController" ng-init="init(activity)">
+    <form role="form" name="challengeForm">
+        <div class="form-group">
+            <label for="inputMessage">Meddelande till kollega</label>
+            <textarea class="form-control input-sm" name="message" placeholder="Meddelande" ng-model="message"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="whom">Med vem?</label>
+            <ul class="list-inline">
+                <li ng-repeat="challengeUser in challengeUsers">
+                    <span class="user-tag">{{challengeUser.fullName}} <span class="fa fa-times user-tag-remove-btn" ng-click="removeUserFromChallenges(challengeUser)"></span></span>
+                </li>
+            </ul>
+            <input class="form-control" name="whom" ng-model="selectedUser" type="text" placeholder="Tagga en kollega"
+                   ng-options="user as user.fullName for user in users" data-template="agTypehead/ahead.tpl.html" data-min-length="1" data-on-select="addUserToChallenges" data-limit="8" bs-typeahead />
+            <p class="invalid-input-message" ng-show="userTagging.mandatory && !taggedUserPristine && taggedUsers.length === 0">Du måste tagga minst en person.</p>
+        </div>
+
+        <div class="pull-right">
+			<button type="submit" class="btn btn-sm m-t-10" ng-disabled="hasTaggedUser()" ng-click="postChallenge(activity); modalOptions.ok()">Utmana</button>
+        </div>
+    </form>
+</div>

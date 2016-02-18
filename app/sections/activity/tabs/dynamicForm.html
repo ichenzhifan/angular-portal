@@ -1,0 +1,48 @@
+﻿<div ng-controller="tabController" ng-init="init(activity)">
+    <form class="form" role="form" name="formName" ng-submit="activityCompleted(activity, modalOptions.ok)" novalidate>
+        <div ng-repeat="field in fields">
+            <ng-form name="form">
+                <label for="{{field.caption}}">
+                    {{field.caption}}
+                    <span class="required-input-pristine" ng-show="form.input.$invalid && form.input.$pristine">*</span>
+                </label>
+                <div ng-switch on="field.type">
+                    <input ng-switch-when="text" class="form-control" type="text" name="input" ng-model="field.model" ng-required="{{field.mandatory}}" />
+                    <input ng-switch-when="url" class="form-control" type="text" name="input" ng-model="field.model" ag-val-url ng-required="{{field.mandatory}}" />
+                    <textarea ng-switch-when="textarea" class="form-control" name="input" ng-model="field.model" ng-required="{{field.mandatory}}"></textarea>
+                </div>
+                <p class="invalid-input-message" ng-show="form.input.$invalid && form.input.$dirty">{{field.validationMessage}}</p>
+            </ng-form>
+        </div>
+
+        <!-- Geotagging -->
+        <!--<ng-form name="form">
+            <label for="pos">
+                Plats
+            </label>
+            <input class="form-control" type="text" name="input" ng-model="position" ng-options="address.formatted_address as address.formatted_address for address in getAddress(position)" bs-typeahead/>
+        </ng-form>-->
+
+        <div class="form-group" ng-show="userTagging ? userTagging.active : false">
+            <label for="whom">
+                Med vem?
+                <span class="required-input-pristine" ng-show="userTagging.mandatory && taggedUserPristine">*</span>
+            </label>
+            <ul class="list-inline">
+                <li ng-repeat="taggedUser in taggedUsers">
+                    <span class="user-tag">{{taggedUser.fullName}} <span class="fa fa-times user-tag-remove-btn" ng-click="removeUserTag(taggedUser)"></span></span>
+                </li>
+            </ul>
+            <input class="form-control" name="whom" ng-model="tagUser" type="text" placeholder="Tagga en kollega"
+                   ng-options="user as user.fullName for user in users" data-template="agTypehead/ahead.tpl.html" data-min-length="1" data-on-select="addUserTag" data-limit="8" bs-typeahead />
+            <p class="invalid-input-message" ng-show="userTagging.mandatory && !taggedUserPristine && taggedUsers.length === 0">Du måste tagga minst en person.</p>
+        </div>
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-sm m-t-10" ng-disabled="formName.$invalid || !isTaggedUsersOk || isPosted">
+                <span class="fa fa-spin fa-refresh" ng-show="isPosting"></span>
+                <span>Utför</span>
+            </button>
+        </div>
+    </form>
+</div>

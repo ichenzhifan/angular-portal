@@ -1,0 +1,111 @@
+#skin-blur-transparent {
+    background-image: none;
+}
+
+.breadcrumb {
+    display: none;
+}
+
+.breadcrumb a {
+    color: black;
+}
+
+.breadcrumb > .active {
+    color: #888;
+}
+
+.sa-top-message {
+    background-image: url(../../Content/images/icon/message_inverted.png);
+}
+
+.sa-top-updates {
+    background-image: url(../../Content/images/icon/updates_inverted.png);
+}
+
+.tile, .tile-dark, .tile-title, .table th {
+    background: rgba(0,0,0,0.01);
+    color: #888;
+}
+
+.text-muted {
+    color: #888;
+}
+
+.t-overflow {
+    color: #428bca;
+}
+
+#sidebar {
+    display: none;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.logo {
+    display: none;
+}
+
+#content {
+    margin-left: 0;
+}
+
+.progress {
+    background: transparent;
+}
+
+.completed-counter {
+	background: #000;
+	color: #fff;
+}
+
+.tile-config > a:hover {
+    background-color: rgba(0,0,0,0.3);
+    background-image: url(../../Content/images/icon/tile-actions.png);
+}
+
+.tile-config > .tile-menu {
+    background-image: url(../../Content/images/icon/tile-actions-inverted.png);
+}
+
+small {
+    color: #888;
+}
+
+header {
+    display: none;
+}
+
+.chat {
+    display: none;
+}
+
+a.like {
+    color: #428bca;
+    font-size: 85%;
+}
+
+#content > div.block-area > div > div > div > table > tbody > tr > td.info
+{
+    background-color: rgba(91, 192, 222, 0.8);
+    color: white;
+}
+
+#content > div.block-area > div > div > div > table > tbody > tr > td.warning
+{
+    background-color: rgba(240, 173, 78, 0.8);
+    color: white;
+}
+
+#content > div.block-area > div > div > div > table > tbody > tr > td.success
+{
+    background-color: rgba(92, 184, 92, 0.8);
+    color: white;
+}
+
+#content > div.block-area > div > div > div > table > tbody > tr > td.danger
+{
+    background-color: rgba(217, 83, 79, 0.8);
+    color: white;
+}

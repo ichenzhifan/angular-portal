@@ -1,0 +1,38 @@
+﻿<div class="leaderboard" ng-controller="leaderboardController">
+    <div class="leaderboard-header">
+        <h2 class="tile-title">Topplista</h2>
+    </div>
+    <ag-error ag-topic="leaderboard.getLeaderboard"></ag-error>
+    <div class="leaderboard-container">
+        <table class="table tile center-align">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-2" ng-repeat="row in headers | orderBy: 'activityGroupValue'" ng-class="{ info: row.activityGroupValue === 1,
+				warning: row.activityGroupValue === 2,
+				success: row.activityGroupValue === 4,
+				danger: row.activityGroupValue === 8 }">
+                        {{row.name}}
+                    </th>
+                    <th class="col-md-1">Summa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in leaderboard | orderBy: '-score'">
+                    <td>
+                        <img class="user-image" width="37" ng-src="{{row.user.image}}" alt="">
+                    </td>
+                    <td class="left-align">{{row.user.name}}</td>
+                    <td ng-repeat="asset in row.assets | orderBy: 'activityGroupValue'" ng-class="{ info: asset.activityGroupValue === 1,
+				warning: asset.activityGroupValue === 2,
+				success: asset.activityGroupValue === 4,
+				danger: asset.activityGroupValue === 8 }">
+                        {{asset.score}}
+                    </td>
+                    <td>{{row.score}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

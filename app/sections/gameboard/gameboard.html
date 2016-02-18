@@ -1,0 +1,52 @@
+﻿<div class="gameboard equal" ng-controller="gameboardController">
+    <ag-error ag-topic="gameboard.getGameboard"></ag-error>
+    <div class="col-sm-3" ng-repeat="activityGroup in activityGroups">
+        <div class="tile block-area" ng-class="{'activityGroup-1': activityGroup.value === 1,
+			 'activityGroup-2': activityGroup.value === 2,
+			 'activityGroup-4': activityGroup.value === 4,
+			 'activityGroup-8': activityGroup.value === 8}" activity-group-id="{{activityGroup.id}}" ag-gameboard-completed>
+            <div class="p-relative">
+                <h2 class="tile-title cursor-default">{{activityGroup.name}}</h2>
+                <button class="info-icon" type="button" data-trigger="focus" data-placement="bottom" data-template="popover/gameboardInfo.tpl.html" bs-popover>
+                    <i class="fa fa-info-circle"></i>
+                </button>
+            </div>           
+            <div class="center-align draggable droppable">
+                <div ng-repeat="(key, activities) in activityGroup.activities | groupBy: 'row'">
+                    <div ng-attr-id="{{activity.value}}" class="col-sm-4 droppable activity-wrapper" x-lvl-drop-target="true" x-on-drop="dropped(dragData, activityGroup.id)"
+                         ng-repeat="activity in activities | orderBy: 'column'"
+                         ng-click="open(activity)" data-placement="top" data-template="popover/activityDescription.tpl.html" data-trigger="{{popoverTrigger(activity)}}" bs-popover>
+
+                        <!--<div class="completed-counter animated" ng-if="activity.userCompletions > 0">{{activity.userCompletions}}</div>-->
+	                    <div class="gameboard-activity center p-relative" ng-class="{'in-pipeline': activity.isPlacedInPipeline}">
+		                    <img ng-src="{{activity.imgSrc}}" alt="{{activity.name}}" x-lvl-draggable="{{activity.userCompletions < 3}}" data-custom="{{buildCustomData(activity.id, activityGroup.id)}}" />
+		                    <div class="ribbon animated-ribbon" ng-class="{'ribbon-mark': activity.isChallenged}" ng-show="activity.isChallenged" data-placement="bottom" data-template="popover/challangeTimer.tpl.html" bs-popover>
+			                    <div class="ribbon-stitches-top"></div>
+			                    <strong class="ribbon-content">
+				                    <h1>Utmanad</h1>
+			                    </strong>
+			                    <div class="ribbon-stitches-bottom"></div>
+		                    </div>
+		                    <div class="hide small-ribbon p-absolute" ng-class="{'ribbon-mark': activity.isChallenged}" ng-show="activity.isChallenged" data-placement="bottom" data-template="popover/challangeTimer.tpl.html" bs-popover>
+			                    <span class="ribbon-text" title="Utmanad">U</span>
+		                    </div>
+
+		                    <ul class="list-inline dots p-absolute full-width">
+			                    <!--AEP-277: Maximum of dots below activities should be 3-->
+			                    <li ng-repeat="n in [] | range: activity.userCompletions : maxCompletions">
+				                    <span class="fa fa-circle"></span>
+			                    </li>
+		                    </ul>
+	                    </div>
+						<!-- Temporarly removed.. -->
+                        <!--<div class="lines" ng-class="{
+							'one-line': oneLine(activity, activityGroup.activities),
+							'two-lines': twoLines(activity, activityGroup.activities),
+							'three-lines': threeLines(activity, activityGroup.activities)
+						 }"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

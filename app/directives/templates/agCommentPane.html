@@ -1,0 +1,9 @@
+﻿
+<div ng-show="isVisible" class="add-comment-pane">
+    <div>
+        <img class="comment-image pull-left" ng-src="{{image}}" alt="{{userName}}" />
+        <input class="form-control pull-left comment-input" ng-disabled="obj.isPosting" ag-on-enter="onSubmit({news: newsData, obj: obj})" ng-model="obj.message" placeholder="Skriv din kommentar här..." type="text" />
+        <span class="fa fa-spinner fa-spin" ng-show="obj.isPosting"></span>
+    </div>
+</div>
+

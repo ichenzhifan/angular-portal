@@ -1,0 +1,318 @@
+﻿.notifications {
+	position: relative;
+
+	&.menu-drawer {
+		margin: 0;
+		-moz-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		-webkit-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+
+		& > a {
+			padding: 0 8px 0 0;
+			white-space: nowrap;
+			height: 50px;
+			float: left;
+
+			span {
+				width: 0;
+				float: left;
+				overflow: hidden;
+				line-height: 48px;
+				-moz-transition: all 0.3s ease;
+				-o-transition: all 0.3s ease;
+				-webkit-transition: all 0.3s ease;
+				transition: all 0.3s ease;
+			}
+		}
+
+		&:hover {
+			& > a {
+				span {
+					width: 80px;
+				}
+			}
+		}
+	}
+
+	.dropdown-menu {
+		width: 270px;
+		background: rgba(0,0,0,0.85);
+		color: #FFF;
+		opacity: 0.65;
+		font-size: 14px;
+		-moz-border-radius: 0;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		padding: 0 0 20px 0;
+		height: 410px;
+		overflow-y: scroll;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+
+        &.challenges {
+            height: auto;
+            overflow-y: auto;
+            min-width: 280px;
+            max-width: 350px;
+
+            div {
+                overflow: hidden;
+            }
+
+            li {
+                &.notification-list-item {
+                    /*#region Animate in/out*/
+                    &.ng-move,
+                    &.ng-enter {
+                        -moz-transition: all 0.3s ease;
+                        -o-transition: all 0.3s ease;
+                        -webkit-transition: all 0.3s ease;
+                        transition: all 0.3s ease;
+                        max-height: 0;
+                        opacity: 0;
+
+                        &.ng-move-active,
+                        &.ng-enter-active {
+                            max-height: 50px;
+							opacity: 1;
+                        }
+                    }
+
+                    &.ng-leave {
+                        -moz-transition: all 0.3s ease;
+                        -o-transition: all 0.3s ease;
+                        -webkit-transition: all 0.3s ease;
+                        transition: all 0.3s ease;
+                        max-height: 50px;
+                        opacity: 1;
+
+                        &.ng-leave-active {
+                            max-height: 0;
+                            opacity: 0;
+                        }
+                    }
+                    /*#endregion*/
+                    .notification-wrapper {
+                        position: relative;
+                        min-width: 270px;
+                        max-height: 50px;
+                        margin: -10px;
+                        padding: 0 10px 10px 10px;
+                        opacity: 0.8;
+                        -moz-transition-delay: 0.2s;
+                        -o-transition-delay: 0.2s;
+                        -webkit-transition-delay: 0.2s;
+                        transition-delay: 0.2s;
+                        -moz-transition: max-height 0.5s ease, opacity 0.8s ease;
+                        -o-transition: max-height 0.5s ease, opacity 0.8s ease;
+                        -webkit-transition: max-height 0.5s ease, opacity 0.8s ease;
+                        transition: max-height 0.5s ease, opacity 0.8s ease;
+
+                        &.invalid {
+                            background-color: #f89406;
+                            color: #fff;
+
+                            a {
+                                img.notification-image {
+                                    border-color: #fff;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            opacity: 1;
+                            max-height: 300px;
+                            cursor: default;
+
+                            .activity-wrapper {
+                                opacity: 1;
+                            }
+                        }
+
+                        .notification-top-background {
+                            height: 35px;
+							width: 100%;
+                            position: absolute;
+							top: 0;
+							left: 0;
+							background: rgb(67, 67, 67);
+						}
+
+                        .activity-wrapper {
+                            -moz-transition: opacity 0.6s ease;
+                            -o-transition: opacity 0.6s ease;
+                            -webkit-transition: opacity 0.6s ease;
+                            transition: opacity 0.6s ease;
+                            text-align: center;
+                            opacity: 0;
+
+                            .hasExpired {
+                                color: red;
+                            }
+
+							.activity-image {
+								margin-top: 10px;
+								margin-bottom: 10px;
+								width: 40px;
+								border-radius: 50%;
+							}
+
+                            .activity-description-wrapper {
+                                margin: 0 10px;
+                                text-align: left;
+
+                                .activity-description {
+                                    white-space: normal;
+                                }
+                            }
+
+                            .challange-buttons {
+                                height: 50px;
+                                margin: 10px;
+
+                                .challange-btn {
+                                    border-radius: 50%;
+                                    width: 42px;
+                                    height: 42px;
+                                    color: #FFF;
+                                    display: inline-block;
+                                    margin: 3px;
+                                    font-weight: normal;
+                                    text-align: center;
+                                    vertical-align: middle;
+                                    cursor: pointer;
+                                    background-image: none;
+                                    border: 1px solid transparent;
+                                    white-space: nowrap;
+                                    padding: 6px 12px;
+                                    font-size: 14px;
+                                    line-height: 1.42857143;
+                                    -webkit-user-select: none;
+                                    -moz-user-select: none;
+                                    -ms-user-select: none;
+                                    user-select: none;
+
+                                    &.btn-success {
+                                        background-color: #5cb85c;
+                                        border-color: #4cae4c;
+                                        box-shadow: 0 0 3px 3px #5cb85c !important;
+
+                                        &:hover {
+                                            -moz-animation: pulse-box-shadow-success 1s ease infinite;
+                                            -o-animation: pulse-box-shadow-success 1s ease infinite;
+                                            -webkit-animation: pulse-box-shadow-success 1s ease infinite;
+                                            animation: pulse-box-shadow-success 1s ease infinite;
+                                            box-shadow: 0;
+                                        }
+                                    }
+
+                                    &.btn-danger {
+                                        background-color: #d9534f;
+                                        border-color: #d43f3a;
+                                        box-shadow: 0 0 3px 3px #d9534f !important;
+
+                                        &:hover {
+                                            -moz-animation: pulse-box-shadow-danger 1s ease infinite;
+                                            -o-animation: pulse-box-shadow-danger 1s ease infinite;
+                                            -webkit-animation: pulse-box-shadow-danger 1s ease infinite;
+                                            animation: pulse-box-shadow-danger 1s ease infinite;
+                                            box-shadow: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .notification-header {
+                            position: relative;
+                            color: #FFF;
+                            padding: 0;
+
+                            .countdown {
+                                font-size: 11px;
+                                font-weight: bold;
+                                margin-right:6px;
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                height: 20px;
+                                width: 100px;
+                                text-align: right;
+                            }
+                        }
+
+                        .notification-image {
+                            width: 45px;
+                            height: 45px;
+                            border-radius: 50%;
+                            border: 1px solid #000;
+                            margin-top: 10px;
+                            margin-left:6px;
+                        }
+
+                        .notification-name {
+                            margin-left: 10px;
+                        }
+
+                        .notification-message {
+                            margin-top: 10px;
+                            font-size: 13px;
+                            font-weight: 600;
+                        }
+
+                        span {
+                            width: 100%;
+                            line-height: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.pulse-box-shadow-success() {
+	0%, 100% {
+		box-shadow: none;
+	}
+
+	50% {
+		box-shadow: 0 0 3px 3px #5cb85c !important;
+	}
+}
+
+.pulse-box-shadow-danger() {
+	0%, 100% {
+		box-shadow: none;
+	}
+
+	50% {
+		box-shadow: 0 0 3px 3px #d9534f !important;
+	}
+}
+
+@keyframes pulse-box-shadow-success {
+	.pulse-box-shadow-success();
+}
+
+@-moz-keyframes pulse-box-shadow-success {
+	.pulse-box-shadow-success();
+}
+
+@-webkit-keyframes pulse-box-shadow-success {
+	.pulse-box-shadow-success();
+}
+
+@keyframes pulse-box-shadow-danger {
+	.pulse-box-shadow-danger();
+}
+
+@-moz-keyframes pulse-box-shadow-danger {
+	.pulse-box-shadow-danger();
+}
+
+@-webkit-keyframes pulse-box-shadow-danger {
+	.pulse-box-shadow-danger();
+}

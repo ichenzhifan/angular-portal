@@ -1,0 +1,26 @@
+﻿<div class="userProfile" ng-controller="userProfileController">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="page-header">
+				<h3>{{userProfile.fullName}}</h3>
+			</div>
+			<div class="userProfile-wrapper">
+				<div class="row center-align">
+					<img class="userProfile-image" ng-src="{{userProfile.image}}" alt="{{userProfile.fullName}}" ng-click="viewLargerImage()" />
+				</div>
+				<div class="row">
+					<label>
+						<strong>Om {{userProfile.firstName}}</strong>
+					</label>
+					<p>{{userProfile.description}}</p>
+				</div>
+				<div class="row">
+					<label>
+						<strong>Intressen</strong>
+					</label>
+					<p>{{userProfile.interests}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

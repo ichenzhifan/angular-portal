@@ -1,0 +1,28 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="utf-8">
+	<title>Awesome Portal</title>
+
+	<link href="Content/less/main.css" rel="stylesheet" />
+	<link href="Content/css/form.css" rel="stylesheet">
+	<link href="Content/css/icons.css" rel="stylesheet">
+</head>
+<body ng-controller="settingsController" ng-attr-id="{{selectedTheme}}">
+	<toaster-container toaster-options="{'time-out': 3000, 'close-button':true}"></toaster-container>
+	<div ng-show="signedIn" ng-include="'app/sections/topbar/topbar.html'"></div>
+	<section id="main" class="p-relative" role="main">
+		<section id="content" class="container">
+			<div ng-controller="shellController" ng-view></div>
+		</section>
+	</section>
+
+	<script src="built.js"></script>
+
+	<!-- Other scripts -->
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="Scripts/angular-google-maps.min.js"></script>
+</body>
+</html>

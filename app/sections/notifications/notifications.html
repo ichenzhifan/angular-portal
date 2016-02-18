@@ -1,0 +1,120 @@
+﻿<div class="notifications">
+    <!-- #region Notifications -->
+    <div class="pull-left notifications menu-drawer" is-open="ddStatus.notificationsOpen" ng-controller="notificationController" dropdown>
+        <a data-drawer="notifications" ng-class="{'drawer-toggle': notifications.length > 0}" class="dropdown-toggle" href="" ng-disabled="ddStatus.notificationsDisabled">
+            <i class="sa-top-message"></i>
+            <i class="n-count" ng-show="noOfUnreadNotifications > 0">
+                {{noOfUnreadNotifications}}
+            </i>
+            <span>Notifieringar</span>
+        </a>
+        <!--<ul class="dropdown-menu standard-notifications {{selectedTheme}}" id="standard-notifica<ions" role="menu" msd-wheel="preventPageScroll($event, $delta, $deltaX, $deltaY)">-->
+        <ul class="dropdown-menu standard-notifications {{selectedTheme}}" id="standard-notifications" role="menu" on-bottom-topic="not.hit.bottom" ag-scroll-handler="preventPageScroll($event, $delta, $deltaX, $deltaY)">
+            <li class="notification-list-item" id="not_{{$index}}" ng-repeat="not in notifications">
+                <div class="notification-wrapper" ng-class="{unread: !not.isRead}">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="notification-header cursor-pointer" ng-click="switchReadStatus(not, $event)">
+                                    <div class="pull-left">
+                                        <small>{{not.created | date:'yyyy-MM-dd HH:mm'}}</small>
+                                    </div>
+                                    <div class="pull-right" ng-switch on="not.isRead">
+                                        <span class="fa fa-eye cursor-pointer" ng-switch-when="true" data-title="Markera som oläst" bs-tooltip></span>
+                                        <span class="fa fa-eye-slash cursor-pointer" ng-switch-when="false" data-title="Markera som läst" bs-tooltip></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row notification-content">
+                            <div class="col-md-3">
+                                <a ng-href="#/userProfile/{{not.userSender.id}}">
+                                    <img class="notification-sender-image" ng-show="not.userSender.image != null" ng-src="{{not.userSender.image}}" alt="not.userSender.fullName" />
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div ng-class="{'col-md-9': not.image !== null, 'col-md-12': not.image === null}">
+                                        <div class="notification-message">{{not.message}}</div>
+                                    </div>
+                                    <div class="col-md-3" ng-show="not.image !== null">
+                                        <img class="notification-image" ng-src="{{not.image}}" alt="image" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <div class="p-absolute full-width">
+                <ag-loading-progress progress-show-topic="not.progress.show"
+                                     progress-hide-topic="not.progress.hide"
+                                     reached-last-page-topic="not.last.page">
+                </ag-loading-progress>
+                <span class="to-top p-absolute" ag-scroll-to scroll-ele="standard-notifications" scroll-to="not_0">
+                    <i class="fa fa-arrow-circle-up"></i>
+                </span>
+            </div>
+        </ul>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Challanges -->
+    <div class="pull-left notifications menu-drawer" is-open="ddStatus.challengesOpen" dropdown ng-controller="challengeNotificationController">
+        <a data-drawer="challanges" ng-class="{'drawer-toggle': challenges.length > 0 }" class="dropdown-toggle" href="" ng-disabled="ddStatus.challengesDisabled">
+            <i class="sa-top-updates"></i>
+            <i class="n-count" ng-show="unreadChallenges.length > 0" ng-bind="unreadChallenges.length"></i>
+            <span>Utmaningar</span>
+        </a>
+        <div class="dropdown-menu challenges" role="menu">
+            <li class="notification-list-item" ng-class="{unread: challenge.unread}" ng-repeat="challenge in challenges">
+                <div class="notification-wrapper" ng-class="{invalid: hasExpired(challenge)}">
+                    <div class="notification-top-background"></div>
+                    <div class="notification-header">
+                        <small class="countdown" ag-countdown-clock date="challenge.expiration" sender="\'notification\'"></small>
+                        <img class="notification-image" ng-src="{{challenge.challengerUser.image}}" />
+                        <small class="notification-name">{{challenge.challengerUser.fullName}} har utmanat dig!</small>
+                    </div>
+                    <div class="activity-wrapper">
+                        <span class="notification-message">{{challenge.activity.name}}</span>
+                        <br />
+                        <img class="activity-image" ng-src="{{challenge.activity.image}}" alt="{{challenge.activity.name}}" />
+                        <br />
+                        <div>
+                            <strong class="hasExpired" ng-show="hasExpired(challenge)">Har utgått</strong>
+                        </div>
+                        <div class="activity-description-wrapper">
+                            <span class="activity-description">{{challenge.activity.description}}</span>
+                        </div>
+                        <div class="challange-buttons">
+                            <button class="challange-btn btn-success form-control pull-left" ng-hide="hasExpired(challenge)" ng-click="acceptChallenge($event, challenge)">
+                                <i class="fa fa-check"></i>
+                            </button>
+                            <button class="challange-btn btn-danger form-control pull-right" ng-click="declineChallenge($event, challenge)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </div>
+    </div>
+    <!-- #endregion -->
+    <!-- #region Assets -->
+    <div class="pull-left notification-assets notifications menu-drawer" ng-controller="assetNotificationController">
+        <a data-drawer="assets" ng-class="{'drawer-toggle': totalNumberOfAssets > 0}" class="drawer-toggle">
+            <div class="assets-wrapper" ag-asset-added>
+                <i class="asset-stone fa fa-circle-thin fa-2x"></i>
+            </div>
+            <i class="total-number-of-items n-count" ng-show="totalNumberOfAssets > 0">{{totalNumberOfAssets}}</i>
+            <span>
+                <ul class="list-inline">
+                    <li ng-repeat="asset in stones">
+                        <i class="number-of-items n-count">{{asset.numberOfItems}}</i>
+                        <img ng-src="{{asset.img}}" alt="{{asset.name}}" />
+                    </li>
+                </ul>
+            </span>
+        </a>
+    </div>
+    <!-- #endregion -->
+</div>

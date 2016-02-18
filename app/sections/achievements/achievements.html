@@ -1,0 +1,44 @@
+﻿<div ng-controller="achievementController">
+    <div class="achievement-header">
+        <h2 class="tile-title">
+            <a href="#/currentUserBadge" title="User badges">
+                Utmärkelser
+            </a>
+        </h2>
+        <div class="badge-head row">
+            <p class="sub-title">Här ser du de utmärkelser som du förtjänat</p>
+            <div class="pull-right badge-filter">
+                <div class="btn-group badge-menu" dropdown is-open="dropdown.isOpen">
+                    <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                        <span class="p-5">{{dropdown.defaultValue}}</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li class="menu-listitem cursor-pointer" ng-repeat="type in badgeTypes">
+                            <a href ng-click="filterBadges($event, type)">{{type.value}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ag-error ag-topic="achievement.getAllAchievements"></ag-error>
+    <div class="p-10 photos achievement-container">
+        <div class="badge-list">
+	        <div class="col-xs-2 p-5" ng-repeat="badge in badges">
+		        <div class="badge-wrapper">
+			        <img ng-src="{{badge.imageSrc}}"
+			             alt="{{badge.description}}"
+			             data-placement="top"
+			             data-template="popover/badgeDescription.tpl.html"
+			             bs-popover>
+					<!-- "left":($last?lastX:null)+"px" -->
+			        <div class="badge-progress" ng-style="{'width': badge.percentageDone + '%'}">
+						<span>{{badge.percentageDone}} %</span>
+			        </div>
+		        </div>
+	        </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

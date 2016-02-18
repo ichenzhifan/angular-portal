@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta charset="utf-8">
+	<title>Awesome Portal</title>
+
+	<script type="text/javascript">
+		less = {
+			logLevel: 1, // 0 No errors at all (1 displays errors only, 2 displays info (default))
+			env: 'development'
+		};
+	</script>
+	<link rel="stylesheet/less" type="text/css" href="Content/less/main.less" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
+	<link href="Content/css/bootstrap.min.css" rel="stylesheet">
+	<link href="Content/css/animate.min.css" rel="stylesheet">
+	<link href="Content/css/font-awesome.min.css" rel="stylesheet">
+	<link href="Content/css/form.css" rel="stylesheet">
+	<link href="Content/css/style.css" rel="stylesheet">
+	<link href="Content/css/icons.css" rel="stylesheet">
+	<link href="Content/css/generics.css" rel="stylesheet">
+	<link href="Content/css/profile-menu.css" rel="stylesheet">
+	<link href="Content/css/margins.css" rel="stylesheet">
+</head>
+<body ng-controller="settingsController" ng-attr-id="{{selectedTheme}}">
+	<!--<div class="container">-->
+	<div ng-include="'app/shell/shell.html'"></div>
+
+	<!--<div ng-view class="animate-view"></div>-->
+	<!--</div>-->
+	<!-- In production use:
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+		-->
+	<!-- Bootstrapping -->
+	<script src="Scripts/angular/angular.js"></script>
+	<script src="scripts/angular/animate/angular-animate.min.js"></script>
+	<script src="Scripts/angular/route/angular-route.min.js"></script>
+	<script src="Scripts/angular/ngStorage/ngStorage.min.js"></script>
+	<script src="Scripts/angular/ui-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="Scripts/angular/ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
+	<script src="app/js/app.js"></script>
+	<script src="app/js/appSettings.route.js"></script>
+	<script src="Scripts/angular/sanitize/angular-sanitize.min.js"></script>
+	<script src="Scripts/angular/datepicker/angular-pickadate.js"></script>
+	<script src="Scripts/angular/angular-strap/dist/angular-strap.min.js"></script>
+	<script src="Scripts/angular/angular-strap/dist/angular-strap.tpl.min.js"></script>
+
+	<!-- Services -->
+	<script src="app/js/directives.js"></script>
+	<script src="app/services/pipelineService.js"></script>
+	<script src="app/services/gameboardService.js"></script>
+	<script src="app/services/achievementService.js"></script>
+	<script src="app/services/feedService.js"></script>
+	<script src="app/services/leaderboardService.js"></script>
+	<script src="app/js/mockData.js"></script>
+	<script src="app/js/controllers.js"></script>
+	<script src="app/js/filters.js"></script>
+	<script src="app/js/configModel.js"></script>
+<<<<<<< HEAD
+	
+	<script src="app/js/uuidFactory.js"></script>
+	<script src="app/js/appSettings.js"></script>
+	<!--<script src="app/js/common.js"></script>-->
+	<script src="app/js/dataService.js"></script>
+	<script src="app/js/accountHandler.js"></script>
+	<script src="app/repository/gameboardRepository.js"></script>
+	<!-- Modules -->
+	<!--<script src="app/shell/shell.js"></script>
+	<script src="app/home/home.js"></script>
+	<script src="app/UserProfile/profile.js"></script>
+	<script src="app/account/signIn.js"></script>
+	<script src="app/account/register.js"></script>
+	<script src="app/achievements/achievements.js"></script>
+	<script src="app/leaderboard/leaderboard.js"></script>
+	<script src="app/account/signInOrRegister.js"></script>
+	<script src="app/instance/instances.js"></script>
+	<script src="app/gamestructure/gamestructure.js"></script>
+	<script src="app/gamestructure/gameStructurePopover.js"></script>
+	<script src="app/activity/activity1.js"></script>
+	<script src="app/activity/activity2.js"></script>-->
+=======
+	<script src="app/repository/gameboardRepository.js"></script>
+	<script src="app/js/uuidFactory.js"></script>
+	<script src="app/js/appSettings.js"></script>
+>>>>>>> master
+	<script src="app/gameboard/gameboard.js"></script>
+	<script src="app/pipeline/pipeline.js"></script>
+	<script src="app/leaderboard/leaderboard.js"></script>
+	<script src="app/assets/assets.js"></script>
+	<script src="app/achievements/achievements.js"></script>
+	<script src="app/activity/activity.js"></script>
+	<script src="app/newsfeed/newsfeed.js"></script>
+	<script src="app/sidebar/sidebar.js"></script>
+	<script src="app/settings/settings.js"></script>
+	<script src="app/js/tagUsers.js"></script>
+	<script src="app/js/modalService.js"></script>
+
+	<!-- Scripts -->
+	<script src="Scripts/underscore-min.js"></script>
+</body>
+</html>

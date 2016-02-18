@@ -1,0 +1,195 @@
+﻿.notifications {
+    position: relative;
+
+    &.menu-drawer {
+        margin: 0;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+
+        & > a {
+            padding: 0 8px 0 0;
+            white-space: nowrap;
+            height: 50px;
+            float: left;
+
+            span {
+                width: 0;
+                float: left;
+                overflow: hidden;
+                line-height: 48px;
+                -moz-transition: all 0.3s ease;
+                -o-transition: all 0.3s ease;
+                -webkit-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+            }
+        }
+
+        &:hover {
+            & > a {
+                span {
+                    width: 80px;
+                }
+            }
+        }
+    }
+
+    .dropdown-menu {
+        &.standard-notifications {
+            min-width: 370px;
+            background: rgba(0,0,0,0.85);
+            color: #FFF;
+            opacity: 0.65;
+            font-size: 14px;
+            -moz-border-radius: 0;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            padding: 0;
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
+            height: 410px;
+            overflow-y: scroll;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+
+            li {
+
+                &.notification-list-item {
+                    background: rgba(0, 0, 0, 0.35);
+                    /*#region Animate in/out */
+                    &.ng-move,
+                    &.ng-enter {
+                        -moz-transition: all 0.3s ease;
+                        -o-transition: all 0.3s ease;
+                        -webkit-transition: all 0.3s ease;
+                        transition: all 0.3s ease;
+                        max-height: 0;
+                        opacity: 0;
+
+                        &.ng-move-active,
+                        &.ng-enter-active {
+                            max-height: 100px;
+                            opacity: 1;
+                        }
+                    }
+
+                    &.ng-leave {
+                        -moz-transition: all 0.3s ease;
+                        -o-transition: all 0.3s ease;
+                        -webkit-transition: all 0.3s ease;
+                        transition: all 0.3s ease;
+                        max-height: 100px;
+                        opacity: 1;
+
+                        &.ng-leave-active {
+                            max-height: 0;
+                            opacity: 0;
+                        }
+                    }
+                    /*#endregion */
+                    .notification-wrapper {
+                        position: relative;
+                        min-width: 370px;
+                        min-height: 75px;
+                        padding: 0 15px 5px 5px;
+                        opacity: 0.8;
+                        border-bottom: 1px solid #000;
+                        -moz-box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        box-sizing: border-box;
+                        .trans();
+
+                        &.unread {
+                            background: rgba(192, 192, 192, 0.8);
+                            color: #000;
+                        }
+
+                        &:hover {
+                            opacity: 1;
+                            /*.activity-wrapper {
+								opacity: 1;
+							}*/
+                        }
+
+                        .notification-header {
+                            color: #FFF;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 20px;
+                            padding: 0 5px;
+                            background: rgba(0, 0, 0, 0.35);
+                            -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+                            -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+                            box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+                        }
+
+                        .notification-content {
+                            margin-top: 25px;
+
+                            .notification-sender-image {
+                                height: 45px;
+                                width: 45px;
+                                .round();
+                                -moz-box-shadow: 0 0 1px 1px #000;
+                                -webkit-box-shadow: 0 0 1px 1px #000;
+                                box-shadow: 0 0 1px 1px #000;
+                            }
+
+                            .notification-image-wrapper {
+                                text-align: center;
+
+                                .notification-image {
+                                    height: 45px;
+                                    width: 45px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .loading-progress {
+                .loading-content {   
+                    max-height: 23px;                
+                    opacity: 0;
+                }
+
+                .p-show {    
+                    max-height: 23px;                
+                    opacity: 1;
+                }
+            }
+
+            .to-top {
+                bottom: 0;
+                right: 2px;
+                width: 20px;
+                height: 20px;
+
+                i {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .notification-get-more {
+            background: rgba(192, 192, 192, 0.8);
+            color: #000;
+            cursor: pointer;
+            /*position: absolute;
+			bottom: 0;
+			left: 0;*/
+            width: 100%;
+            height: 20px;
+
+            &:hover {
+                background: rgb(192, 192, 192);
+                color: #FFF;
+            }
+        }
+    }
+}
